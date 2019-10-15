@@ -16,18 +16,23 @@ let button = document.querySelector('#read-more');
 // retrieve Nasa API Data
 fetch('https://api.nasa.gov/planetary/apod?api_key=OYmcFk9suUpheeKksdpSAAad2vyFmrDDE1qF5ie3')
 .then(response => {
-    let myResponse = response.json();
+    let myResponse = response.json();    
     return myResponse;
 })
 .then(data => {
     let date = data.date;
+    let newDate = date.split('-', 3);
+    let month = newDate[1];
+    let day = newDate[2];
+    let year = newDate[0];   
+    
     let title = data.title;
     let explanation = data.explanation;
     let url = data.hdurl;
-    
+
     pageTitle.textContent = title;
     pageExplanation.textContent = explanation;
-    pageDate.textContent = date;
+    pageDate.textContent = `${month} . ${day} . ${year}`;
     body.style.backgroundImage = `url(${url})`;
 })
 .catch(error => console.log(error));
