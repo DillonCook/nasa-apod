@@ -1,3 +1,16 @@
+// Make sure SW is supported
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+        .register('sw.js')
+        .then(registration => {
+            console.log('SW registered');
+        })
+        .catch(error => console.log(`Service Worker: Error: ${error}`))
+    })
+    
+}
+
 let pageTitle = document.querySelector('#title');
 let body = document.querySelector('body');
 let pageExplanation = document.querySelector('#explanation');
@@ -11,7 +24,6 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=OYmcFk9suUpheeKksdpSAAad2vyFm
     return myResponse;
 })
 .then(data => {
-    console.log(data); 
     let date = data.date;
     let title = data.title;
     let explanation = data.explanation;
