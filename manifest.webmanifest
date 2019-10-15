@@ -1,6 +1,7 @@
 {
-    "name": "NASA's Astronomy Picture of the Day",
+    "name": "Space Watcher",
     "short_name": "Space Watcher",
+    "description": "NASA's Astronomy Picture of the Day",
     "icons": [
         {
           "src": "/images/space-watch-192.png",
